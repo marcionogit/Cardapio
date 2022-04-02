@@ -1,20 +1,45 @@
-print('MONTE SEU COPO:')
-print('ESCOLHA UM TAMANHO:')
+from time import sleep
+print('\033[1;30;45mMONTE SEU COPO!\033[m')
+print('\033[1;30;45mESCOLHA UM TAMANHO\033[m')
 print(' 200ml    500ml    750ml')
-n1 = int(input('R$10.00  R$15.00  R$18,00:'))
-print('ESCOLHA 1 SORVETE:')
-sorv = input('Açai, Ninho, Brigadeiro:')
-print('ESCOLHA 3 ACOMPANHAMENTOS:')
-acom = input('Paçoca, Mms, Leite em pó, Leite Con, Chocobol, Bis:')
-print('ESCOLHA 2 FRUTAS')
-fru = input('Banana, Morango, Kiwi, Manga:')
-print('2 ADICIONAIS R$2.00:')
-adi = input('Bis, Rolinho, Nutella, Leite con, Granulado:')
-print('PEDIDO:')
-print('COPO:',n1)
-print('SORVETE:',sorv)
-print('ACOMPANHAMENTO:',acom)
-print('FRUTAS:',fru)
-print('ADICIONAIS:',adi)
-s =(n1+2)
-print('TOTAL:',s,'REAIS')
+n1 = float(input('R$10.00  R$15.00  R$18,00: '))
+print('\033[1;30;45mESCOLHA 1 SORVETE:\033[m')
+sorvete = str(input('Açai, Ninho, Brigadeiro: ')).strip()
+print('\033[1;30;45mESCOLHA 3 ACOMPANHAMENTOS:\033[m ')
+acompanhamento = str(input('Paçoca, Mms, Leite em pó, Leite Con, Chocobol, Bis: ')).strip()
+print('\033[1;30;45mESCOLHA 2 FRUTAS\033[m')
+frutas = str(input('Banana, Morango, Kiwi, Manga: ')).strip()
+pergunta1 = str(input('\033[1;30;43mGostaria de 2 ADICIONAIS por só mais R$2,00?\033[m ')).lower().strip()
+if pergunta1 == ('sim'):
+    print('\033[1;30;45m2 ADICIONAIS R$2.00:\033[m ')
+    adicionais = str(input('Bis, Rolinho, Nutella, Leite con, Granulado: ')).strip()
+else:
+    adicionais = 0
+print('\033[1;30;43m=======PEDIDO=======\033[m')
+print('\033[1;30;43mCOPO:\033[m \033[1;30;42mR${:.2f}\033[m'.format(n1))
+print('\033[1;30;43mSORVETE:\033[m \033[1;30;42m{}\033[m'.format(sorvete))
+print('\033[1;30;43mACOMPANHAMENTO:\033[m \033[1;30;42m{}\033[m'.format(acompanhamento))
+print('\033[1;30;43mFRUTAS:\033[m \033[1;30;42m{}\033[m'.format(frutas))
+if pergunta1 == ('sim'):
+    print('\033[1;30;43mADICIONAIS:\033[m \033[1;30;42m{}\033[m'.format(adicionais))
+else:print('\033[1;30;43mADICIONAIS:\033[m \033[1;30;42m{}\033[m'.format(0))
+if pergunta1 == ('sim'):
+    s = n1 + 2
+    print('\033[1;30;43mTOTAL:\033[m \033[1;30;42mR${:.2f}\033[m'.format(s))
+else:
+    soma = n1
+    print('\033[1;30;43mTOTAl:\033[m \033[1;30;42mR${:.2f}\033[m'.format(soma))
+print('\033[1;30;45m===DINHEIRO OU CARTAO===\033[m')
+pagamento = str(input('Qual seria a forma de pagamento?: ')).lower().strip()
+if pagamento == ('cartao'):
+    funcao = str(input('\033[1;30;43mDébito\033[m ou \033[1;30;43mCrédito?\033[m: ')).strip()
+    senha = str(input('Pode digitar a senha...')).strip()
+    print('    ...\033[1;30;43mPROCESSADO\033[m...')
+    sleep(3)
+    print('\033[1;30;42m=====COMPRA APROVADA=====\033[m')
+    print('\033[1;30;45mMUITO OBRIGADO! ATÉ MAIS!\033[m')
+else:
+    print('Dinheiro? Fechou!')
+    dinheiro = float(input('\033[1;30;43mDIGITE UM VALOR ACIMA DO "TOTAL"\033[m '))
+    print('Seu troco é \033[1;30;45mR${:.2f}\033[m'.format(dinheiro - n1))
+
